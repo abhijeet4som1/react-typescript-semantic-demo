@@ -13,3 +13,13 @@ export class User {
 	email: string;
 	phone: string;
 }
+
+let _this:any;
+
+/*other methods used in the form*/
+export const bindInstance = (obj) => _this=obj;
+
+/*On click of action*/
+export const onActionSelect = (value:string,index:number) => {
+	console.log('action called',value,index);
+}

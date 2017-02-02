@@ -30,7 +30,7 @@ class UserAdd extends React.Component<helper.UserAddprops, {}>{
 			<div>
 				<div className="sixteen wide ui grid">
 					<div className="eight wide column">
-						<div className="ui form userAddForm">						
+						<div className="ui form userAddForm">
 							<div className="required field">
 								<label>Name</label>
 								<div className="ui input">
@@ -68,9 +68,10 @@ class UserAdd extends React.Component<helper.UserAddprops, {}>{
 								</div>
 							</div>
 						</div>
-						<div className="buttonDiv">
-							<button className="ui right floated button blue" onClick={helper.addUser}>Add User</button>
-						</div>
+						{!this.props.isHideBtn ?
+								<div className="buttonDiv">
+									<button className="ui right floated button blue" onClick={helper.addUser}>Add User</button>
+								</div>:""}
 					</div>
 					<div className="eight wide column">
 						<div className="ui card near-by-cards medium-cards">
@@ -82,7 +83,7 @@ class UserAdd extends React.Component<helper.UserAddprops, {}>{
 						</div>
 					</div>
 				</div>
-				<Modal message="User successfully added." onClose={() => { setTimeout(() => { this.action.setModalState(false); }, 100) } } isShow={this.props.showModal}/>
+				{!this.props.isHideBtn ?<Modal message="User successfully added." onClose={() => { setTimeout(() => { this.action.setModalState(false); }, 100) } } isShow={this.props.showModal}/>:""}
 			</div>
 		);
 	}

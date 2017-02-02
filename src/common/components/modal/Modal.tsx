@@ -13,14 +13,12 @@ class Modal extends React.Component<ModelProps, {}>{
 	}
 
 	componentDidMount(){
-		console.log("componentDidMount called");
 		if (this.props.isShow) {
 			this.showModal();
-		}		
+		}
 	}
 
 	componentDidUpdate(prevProps,prevState){
-		console.log("componentDidMount update");
 		if (this.props.isShow && prevProps.isisShow != this.props.isShow) {
 			this.showModal();
 		}
@@ -40,7 +38,7 @@ class Modal extends React.Component<ModelProps, {}>{
 
 	render(){
 		return (
-			<div className="ui basic modal test-model">
+			<div className="ui modal test-model">
 			  	<div className="header">Success!</div>
 			  	<div className="content">
 			    	<p>{this.props.message}</p>

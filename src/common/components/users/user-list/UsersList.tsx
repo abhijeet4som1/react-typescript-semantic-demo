@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {startCase} from 'lodash';
+import Dropdown from '../../dropdown/Dropdown';
 
 import * as UsersAction from '../../../actions/UsersAction';
 import * as helper from './UsersListHelper';
@@ -25,6 +26,16 @@ class UsersList extends React.Component<helper.UsersListProps, {}>{
 							content.push(
 								<div key={'user-list-' + index} className="ui card near-by-cards medium-cards">
 									<div className="content">
+										<div className="right floated meta">
+												<Dropdown
+													options={[{key:'EDIT',value:'Edit Detail'},{key:'REMOVE',value:'Remove User'}]}
+													label=""
+													value={""}
+													name="action"
+													hideLabel={true}
+										 			onValueChange={(key,value)=>{helper.onActionSelect(value,index);}}
+												/>
+										</div>
 										<div className="header">{startCase(user.user_name) }</div>
 										<div className="meta">Email Address: { user.email }</div>
 										<div className="description">Contact Number: {user.phone}</div>
