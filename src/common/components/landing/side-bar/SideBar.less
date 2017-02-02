@@ -1,0 +1,108 @@
+@fontColor: #b8b7ad;
+
+.sidebar-menu {
+  background-color: #39414e;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 60px;
+  width: 230px;
+  padding-bottom: 3em;
+
+  .menu-items {
+    flex: 0 1 auto;
+
+    .item {
+      color: @fontColor;
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      font-size: 14px;
+      font-weight: 400;
+      overflow: hidden;
+      padding: 1em;
+      position: relative;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border-left: 3px solid transparent;
+      box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .sidebar-header {
+      padding: 0;
+      box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+
+      .sidebar-header-content {
+        box-shadow: none;
+        padding: 13px 2px 13px 16px;
+        cursor: pointer;
+      }
+
+      .sidebar-submenu {
+        .item {
+          box-shadow: none !important;
+          padding-top: 8px !important;
+          padding-bottom: 8px !important;
+          padding-left: 24px !important;
+        }
+      }
+    }
+  }
+}
+
+.sidebar-label {
+  color: @fontColor;
+  vertical-align: text-top;
+  padding-left: 0.2em;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+.sidebar-menu-active {
+  border-left-color: #2185D0 !important;
+  background-color: #1e282c !important;
+  .sidebar-label {
+    font-weight: bold !important;
+  }
+}
+
+.sidebar-menu a:hover,
+.sidebar-submenu > a:hover,
+.sidebar-header-content:hover  {
+  background-color: #1e282c;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0);
+}
+
+
+.sidebar-icon {
+  color: @fontColor;
+  width: 1.4em;
+  float: none;
+  margin: 0;
+  padding-right: 1.2em;
+  font-size: 1.6em;
+}
+
+.sidebar-caret {
+  color: @fontColor;
+  float: right;
+  position: relative;
+  font-size: 1.6em;
+  padding-right: 0;
+  margin-right: 0;
+  transition: all 0.4s ease;
+}
+
+.sidebar-caret-open {
+  .sidebar-caret;
+}
+
+.sidebar-caret-close {
+  .sidebar-caret;
+  transform: rotate(-90deg);
+}

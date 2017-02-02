@@ -1,0 +1,53 @@
+@sideBarWidth: 230px;
+.top-sidebar {
+  width: @sideBarWidth;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10; /* so the menu or its navicon stays above all content */
+  background: #373a47;
+}
+
+.tep-layout,
+.tep-sidebar, .menu-link,
+.top-title-bar, .content-body {
+  transition: all 0.2s ease-out;
+}
+
+.top-title-bar{
+	height: 61px;
+}
+
+.content-body {
+  padding-top: 70px;
+}
+
+.top-title-bar,
+  .content-body {
+  	margin-left:210px;
+  	padding-top:1em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .height-100-perc{
+  	height:100% !important;
+  }
+
+  .content-body{
+  background-color: rgba(204, 220, 255, 0.31);
+    color: rgba(0,0,0,.87);
+  }
+
+  .app-name{
+    padding: 1.5rem;
+    color: #FFF;
+    font-size: large;
+    font-family: monospace;
+  }
+
+  .buttonDiv{
+    margin-top: 10px;
+    height: 35px;
+  }
