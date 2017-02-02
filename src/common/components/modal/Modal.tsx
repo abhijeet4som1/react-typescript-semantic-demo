@@ -3,6 +3,7 @@ import * as React from 'react';
 interface ModelProps {
 	message: string;
 	onClose: () => void;
+	isShow: boolean;
 }
 
 class Modal extends React.Component<ModelProps, {}>{
@@ -12,6 +13,20 @@ class Modal extends React.Component<ModelProps, {}>{
 	}
 
 	componentDidMount(){
+		console.log("componentDidMount called");
+		if (this.props.isShow) {
+			this.showModal();
+		}		
+	}
+
+	componentDidUpdate(prevProps,prevState){
+		console.log("componentDidMount update");
+		if (this.props.isShow && prevProps.isisShow != this.props.isShow) {
+			this.showModal();
+		}
+	}
+
+	showModal(){
 		let _that = this;
 		$('.test-model')
 			.modal({
@@ -21,11 +36,6 @@ class Modal extends React.Component<ModelProps, {}>{
 				}
 			})
 			.modal('show');
-	}
-
-	componentWillUnmount(){
-		console.log("component will un mount called from modal");
-		$(".test-model").remove();
 	}
 
 	render(){

@@ -82,7 +82,7 @@ class UserAdd extends React.Component<helper.UserAddprops, {}>{
 						</div>
 					</div>
 				</div>
-				{this.props.showModal && <Modal message="User successfully added." onClose={() => { setTimeout(() => { this.action.setModalState(false); },100) } }/>}
+				<Modal message="User successfully added." onClose={() => { setTimeout(() => { this.action.setModalState(false); }, 100) } } isShow={this.props.showModal}/>
 			</div>
 		);
 	}
