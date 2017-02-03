@@ -17,8 +17,7 @@ class Dropdown extends React.Component<helper.DropdownModelProps, {}>{
 		    options["onChange"]=(value:string,text:string,element:any)=>{
 				      this.props.onValueChange(this.props.name, value, element);
 			  }
-			  $(`[name='${this.props.name}']`).dropdown(options);
-        console.log("dropdown initialized");
+        $("#" + this.props.name).dropdown(options);
 		}
 
     render(){
@@ -35,6 +34,7 @@ class Dropdown extends React.Component<helper.DropdownModelProps, {}>{
                       this.props.options.forEach((option,index)=>{
                         options.push(<div key= {index} className="item" data-value={trim(option.key) }>{option.value}</div >);
                       });
+                      return options;
                     }
                   })()}
               </div>

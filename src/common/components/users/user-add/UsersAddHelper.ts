@@ -5,8 +5,7 @@ import {cloneDeep} from 'lodash';
 export interface UserAddprops {
 	model: User;
 	showModal: boolean;
-	isHideBtn:boolean;
-
+	
 	dispatch: any;
 }
 
