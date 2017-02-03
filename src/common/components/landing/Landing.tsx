@@ -13,7 +13,7 @@ class Landing extends React.Component<{}, {}>{
 		return (
 			<div style={{ height: '100%' }} className={`tep-layout`}>
 				<div className='top-sidebar'>
-					<div className="app-name">User Management</div>
+					<div className="app-name">Contact Management</div>
 					<SideBar/>
 				</div>
 				<div className='height-100-perc'>
