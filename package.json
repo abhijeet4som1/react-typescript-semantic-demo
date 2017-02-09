@@ -2,8 +2,6 @@
   "name": "react-redux-typescript-server-rendering",
   "version": "0.1.0",
   "main": "src/client/index.tsx",
-  "author": "Abhijeet Kumar <abhijeet4som1@gmail.com>",
-  "license": "MIT",
   "scripts": {
     "start": "node devServer.js"
   },
