@@ -4,7 +4,8 @@ import {
 	SET_SHOW_EDIT_FORM,
 	UPDATE_USERS_LIST,
 	SET_USER_MODEL_AND_INDEX,
-	SET_USER_MODEL
+	SET_USER_MODEL,
+	SET_SEARCH_NAME
 } from '../actions/UsersAction';
 
 /*Action reducer for users component*/
@@ -26,6 +27,10 @@ export default function userReducer(state = initialState, action) {
 
 		case SET_USER_MODEL:{
 			return state.set('model', action.model);
+		}
+
+		case SET_SEARCH_NAME: {
+			return state.set('searchName', action.searchName);
 		}
 
 		case SET_USER_MODEL_AND_INDEX: {

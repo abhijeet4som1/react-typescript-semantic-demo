@@ -1,10 +1,19 @@
 import {User} from '../components/users/user-list/UsersListHelper';
 import {fromJS, List} from 'immutable';
 
+
+let defaultUserList: List<User> = List<User>();
+defaultUserList = defaultUserList.push(new User("Abhijeet", "abhijeet4som1@gmail.com", '9036759055'));
+defaultUserList = defaultUserList.push(new User("Abhinav", "abhijeet4som1@gmail.com", '9036759055'));
+defaultUserList = defaultUserList.push(new User("Kumar", "abhijeet4som3@gmail.com", '9036759055'));
+defaultUserList = defaultUserList.push(new User("Shubhendu", "abhijeet4som3@gmail.com", '9036759055'));
+defaultUserList = defaultUserList.push(new User("Chirag", "chirag@gmail.com", '9036759055'));
+
 /*Initial state*/
 export const initialState = fromJS({
-	users: List(),
+	users: defaultUserList,
 	isLoading: false,
+	searchName: undefined,
 
 	selIndex: -1,
 	model: undefined,
@@ -76,6 +85,12 @@ const deleteUser = (index: number) => {
 	}
 }
 
+/*Action creator for setting is loading*/
+export const SET_SEARCH_NAME = 'SET_SEARCH_NAME';
+const setSearchName = (searchName: string) => {
+	return { type: SET_SEARCH_NAME, searchName: searchName }
+}
+
 export {
 	setIsLoading,
 	setShowEditForm,
@@ -84,5 +99,6 @@ export {
 	setModelAndSelIndex,
 	addUser,
 	editUser,
-	deleteUser
+	deleteUser,
+	setSearchName
 }

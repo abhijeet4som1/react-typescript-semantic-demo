@@ -1,11 +1,13 @@
 /*helper file for model and other method used in the form*/
 import {List} from 'immutable';
-import {cloneDeep} from 'lodash';
+import {cloneDeep, trim} from 'lodash';
 
 /*Props for user list*/
 export interface UsersListProps {
 	users: List<User>;
+	visibleUser: List<User>;
 	isLoading: boolean;
+	searchName: string;
 
 	selIndex:number;
 	model:  User;
@@ -16,12 +18,15 @@ export interface UsersListProps {
 
 export interface UserListState {
 	delop?: number;
-	selUserInd?: number;
-	showEditForm?: boolean;
 }
 
 /*model for user*/
 export class User {
+	constructor(userName?: string, email?: string, phone?: string) {
+		this.user_name = userName;
+		this.email = email;
+		this.phone = phone;
+	}
 	user_name: string;
 	email: string;
 	phone: string;
@@ -34,22 +39,6 @@ let _this: any;
 
 /*Binding this with form instance*/
 export const bindInstance = (obj) => _this = obj;
-/**
-on model value change
-*/
-export const onModelValueChange = (key: string, value: any) => {
-	let newModel: User = cloneDeep(_this.props.model);
-	newModel[key] = value;
-	_this.action.setModel(newModel);
-}
-
-/*Handle value change*/
-export const handleValueChange = (key: string, event: any) => {
-	if (event) {
-		event.persist();
-		onModelValueChange(key, event.target.value);
-	}
-}
 
 /*On click of action*/
 export const onActionSelect = (index: number, value: string) => {
@@ -65,5 +54,14 @@ export const onActionSelect = (index: number, value: string) => {
 	_this.setState({ delop: _this.state.delop + 1 });
 }
 
+export const getVisibleUsers = (users: List<User>, searchName: string) => {
+	console.log("get visible user called", searchName);
+	if(users && searchName){
+		return users.filter(user=> user.user_name.toLowerCase().indexOf(trim(searchName.toLowerCase())) > -1);
+	} else {
+		return users;
+	}
+}
+
 /*method to update the user detail*/
-export const editUserDetail = () => _this.action.editUser(_this.props.selIndex, _this.props.model);
+export const editUserDetail = (values) => _this.action.editUser(_this.props.selIndex, values);

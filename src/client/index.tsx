@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {render}  from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import {rootReducer} from '../common/reducers/rootReducers';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
@@ -12,7 +12,21 @@ import Landing from '../common/components/landing/Landing';
 import UsersList from '../common/components/users/user-list/UsersList';
 import UserAdd from '../common/components/users/user-add/UserAdd';
 
-let store = createStore(rootReducer, {}, applyMiddleware(thunk));
+const composeEnhancers =
+	typeof window === 'object' &&
+	(window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__?
+	(window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+		}) : compose;
+
+const enhancer = composeEnhancers(
+	applyMiddleware(thunk)
+);
+
+let store = createStore(
+		rootReducer, 
+		{}, 
+		enhancer
+);
 const history = syncHistoryWithStore(browserHistory, store);
 render(
 	<Provider store={store}>

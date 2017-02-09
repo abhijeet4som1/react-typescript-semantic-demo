@@ -18,22 +18,12 @@ class UserAdd extends React.Component<helper.UserAddprops, {}>{
 		helper.bindInstance(this);
 	}
 
-	componentDidMount(){
-		$("#userAddForm").form();
-	}
-	
-	componentWillUnmount(){
-		this.action.setModel(new User());
-	}
-
 	render(){
 		return (
 			<div>
 				<UserForm
-					model={this.props.model}
-					handleValueChange={helper.handleValueChange}
-					isSaveBtn={true}
 					saveAction={helper.addUser}
+					btnLabel="Add User"
 				/>
 				{this.props.showModal ?
 					<DialogBox width={500} title="Success!" onClose={() => { this.action.setModalState(false); } }>						
@@ -48,7 +38,6 @@ class UserAdd extends React.Component<helper.UserAddprops, {}>{
 
 }
 const mapStateToProps = state => ({
-	model: state.userAddReducer.get('model'),
 	showModal: state.userAddReducer.get('showModal')
 })
 export default connect(mapStateToProps)(UserAdd);
